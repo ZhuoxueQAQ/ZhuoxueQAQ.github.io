@@ -198,7 +198,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-09-01 00:32:35" itemprop="dateModified" datetime="2020-09-01T00:32:35+08:00">2020-09-01</time>
+                <time title="修改时间：2020-09-01 00:43:07" itemprop="dateModified" datetime="2020-09-01T00:43:07+08:00">2020-09-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -221,69 +221,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <ol>
-<li><p>打开vscode，进入待创建项目的根目录文件夹，在vscode的终端进行操作</p>
-</li>
-<li><p>使用npm初始化项目，生成package.json文件</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> init -y</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>全局安装typescript</p>
-<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> typescript -g</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>初始化，生成tsconfig.json文件</p>
-<figure class="highlight ada"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc <span class="comment">--init</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>根目录下创建src文件夹，在src下创建index.ts，并编译</p>
-<figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tsc .<span class="regexp">/src/i</span>ndex.ts</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>使用webpack工具。安装依赖包：</p>
-<figure class="highlight avrasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i webpack webpack-<span class="keyword">cli</span> webpack-dev-server -D</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>在配置webpack时，要区分开发环境和生产环境，为了让项目便于维护，可以开发环境配置、生产环境配置和公共配置分开书写，最后通过插件合并</p>
-</blockquote>
-</li>
-<li><p>在根目录下创建build文件夹，存放所有的配置文件，创建四个配置文件：<code>webpack.base.config.js</code>,<code>webpack.config.js</code>,<code>webpack.dev.config.js</code>,<code>webpack.pro.config.js</code></p>
-</li>
-<li><p>编写开发环境配置文件<code>webpack.base.config.js</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">&#x27;html-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry: <span class="string">&#x27;./src/index.ts&#x27;</span>,</span><br><span class="line">    output: &#123;</span><br><span class="line">        filename: <span class="string">&#x27;app.js&#x27;</span></span><br><span class="line">    &#125;,</span><br><span class="line">    resolve: &#123;</span><br><span class="line">        extensions: [<span class="string">&#x27;.js&#x27;</span>, <span class="string">&#x27;.ts&#x27;</span>, <span class="string">&#x27;.tsx&#x27;</span>]</span><br><span class="line">    &#125;,</span><br><span class="line">    <span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [</span><br><span class="line">            &#123;</span><br><span class="line">                test: <span class="regexp">/\.tsx?$/i</span>,</span><br><span class="line">                use: [&#123;</span><br><span class="line">                    loader: <span class="string">&#x27;ts-loader&#x27;</span></span><br><span class="line">                &#125;],</span><br><span class="line">                exclude: <span class="regexp">/node_modules/</span></span><br><span class="line">            &#125;</span><br><span class="line">        ]</span><br><span class="line">    &#125;,</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</span><br><span class="line">            template: <span class="string">&#x27;./src/tpl/index.html&#x27;</span></span><br><span class="line">        &#125;)</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>其中<code>entry</code>为项目的入口文件，<code>output</code>为输出文件，<code>resolve</code>代表可支持的文件拓展名。<code>module</code>规定了对指定后缀文件的处理方法，其中<code>test</code>用正则表达式匹配文件后缀，<code>loader</code>则是webpack加载各种资源文件使用的加载器，<code>exclude</code>则是排除指定目录的文件。插件<code>HtmlWebpackPlugin</code>可以帮我们生成网站的首页</p>
-<p>接下来安装配置文件中相关依赖：</p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm <span class="keyword">install</span> ts-loader typescript html-webpack-<span class="keyword">plugin</span> -D</span><br></pre></td></tr></table></figure>
-
-<p>然后编写index.html</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE <span class="meta-keyword">html</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">&quot;en&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">&quot;UTF-8&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">&quot;viewport&quot;</span> <span class="attr">content</span>=<span class="string">&quot;width=device-width, initial-scale=1.0&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;app&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写开发环境配置文件<code>webpack.dev.config.js</code>:</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    devtool: <span class="string">&#x27;cheap-module-eval-source-map&#x27;</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写生产环境配置文件<code>webpack.pro.config.js</code>：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; CleanWebpackPlugin &#125; = <span class="built_in">require</span>(<span class="string">&#x27;clean-webpack-plugin&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    plugins: [</span><br><span class="line">        <span class="keyword">new</span> CleanWebpackPlugin()</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>并安装依赖包，这个包可以在每次成功构建项目之后清除一些无用的文件</p>
-<figure class="highlight coffeescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">npm</span> i clean-webpack-plugin -D</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>编写所有配置文件的入口配置文件<code>webpack.config.js</code></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> &#123; merge &#125; = <span class="built_in">require</span>(<span class="string">&#x27;webpack-merge&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> baseConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.base.config&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> devConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.dev.config&#x27;</span>)</span><br><span class="line"><span class="keyword">const</span> proConfig = <span class="built_in">require</span>(<span class="string">&#x27;./webpack.pro.config&#x27;</span>)</span><br><span class="line"><span class="keyword">let</span> config = process.NODE_ENV === <span class="string">&#x27;development&#x27;</span> ? devConfig : proConfig</span><br><span class="line"><span class="built_in">module</span>.exports = merge(baseConfig, config)</span><br></pre></td></tr></table></figure>
-
-<p>这里需要用npm安装插件<code>webpack-merge</code>，作用是把两个插件合并。该文件首先引入三个配置文件，然后定义变量<code>config</code>判断当前的环境变量，若是开发环境就选择开发环境配置，否则选择生产环境配置，最后合并配置文件</p>
-</li>
-<li><p>修改npm脚本文件<code>package.json</code>，如下：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="attr">&quot;name&quot;</span>: <span class="string">&quot;typescript_learning&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;version&quot;</span>: <span class="string">&quot;1.0.0&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;description&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;main&quot;</span>: <span class="string">&quot;./src/index.ts&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;scripts&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;test&quot;</span>: <span class="string">&quot;echo \&quot;Error: no test specified\&quot; &amp;&amp; exit 1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;start&quot;</span>: <span class="string">&quot;webpack-dev-server --mode=development --config ./build/webpack.config.js&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;build&quot;</span>: <span class="string">&quot;webpack --mode=production --config ./build/webpack.config.js&quot;</span></span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="attr">&quot;keywords&quot;</span>: [],</span><br><span class="line">  <span class="attr">&quot;author&quot;</span>: <span class="string">&quot;&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;license&quot;</span>: <span class="string">&quot;ISC&quot;</span>,</span><br><span class="line">  <span class="attr">&quot;devDependencies&quot;</span>: &#123;</span><br><span class="line">    <span class="attr">&quot;clean-webpack-plugin&quot;</span>: <span class="string">&quot;^3.0.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;html-webpack-plugin&quot;</span>: <span class="string">&quot;^4.4.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;ts-loader&quot;</span>: <span class="string">&quot;^8.0.3&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;typescript&quot;</span>: <span class="string">&quot;^4.0.2&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack&quot;</span>: <span class="string">&quot;^4.44.1&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-cli&quot;</span>: <span class="string">&quot;^3.3.12&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-dev-server&quot;</span>: <span class="string">&quot;^3.11.0&quot;</span>,</span><br><span class="line">    <span class="attr">&quot;webpack-merge&quot;</span>: <span class="string">&quot;^5.1.3&quot;</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>这里首先修改了<code>name</code>，令其不等于typescript，否则编译出错；接下来修改项目入口<code>main</code>；然后编写启动开发环境的命令<code>start</code>：使用<code>webpack-dev-server</code> 并指定为<code>development</code>开发模式，再指明配置文件目录；</p>
-<p>然后就可以启动本地项目了：</p>
-<figure class="highlight properties"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">npm</span> <span class="string">start</span></span><br><span class="line"><span class="attr">...</span></span><br><span class="line"><span class="attr">i</span> <span class="string">｢wdm｣: Compiled successfully.</span></span><br><span class="line"><span class="attr">i</span> <span class="string">｢wdm｣: Compiling...</span></span><br><span class="line"><span class="attr">Version</span>: <span class="string">webpack 4.44.1</span></span><br><span class="line"><span class="attr">显示如下即编译成功，然后就可以在本地8080端口查看页面index.html了</span></span><br></pre></td></tr></table></figure>
-
-<p>接下来使用<code>webpack</code>编写构建生产环境的命令<code>build</code></p>
-<p>然后运行</p>
-<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npn <span class="keyword">run</span><span class="bash"> build</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>到此基本结束。</p>
-</li>
-</ol>
-
+          <h3 id=""><a href="#" class="headerlink" title=""></a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/08/31/Typescript%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
