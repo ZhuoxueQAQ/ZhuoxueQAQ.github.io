@@ -21,17 +21,17 @@
   </script>
 
   <meta property="og:type" content="article">
-<meta property="og:title" content="TypeScript基础语法">
-<meta property="og:url" content="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:title" content="TypeScript基本数据类型">
+<meta property="og:url" content="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/index.html">
 <meta property="og:site_name" content="ZhuoxueQAQ的个人博客">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-08-28T12:48:16.000Z">
-<meta property="article:modified_time" content="2020-08-30T08:06:37.680Z">
+<meta property="article:modified_time" content="2020-09-01T15:43:17.605Z">
 <meta property="article:author" content="Zhuoxue">
 <meta property="article:tag" content="typescript">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+<link rel="canonical" href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
 
 <script id="page-configurations">
@@ -44,7 +44,7 @@
   };
 </script>
 
-  <title>TypeScript基础语法 | ZhuoxueQAQ的个人博客</title>
+  <title>TypeScript基本数据类型 | ZhuoxueQAQ的个人博客</title>
   
 
 
@@ -169,7 +169,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -182,7 +182,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          TypeScript基础语法
+          TypeScript基本数据类型
         </h1>
 
         <div class="post-meta">
@@ -199,7 +199,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-08-30 16:06:37" itemprop="dateModified" datetime="2020-08-30T16:06:37+08:00">2020-08-30</time>
+                <time title="修改时间：2020-09-01 23:43:17" itemprop="dateModified" datetime="2020-09-01T23:43:17+08:00">2020-09-01</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -229,7 +229,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h3 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h3><h3 id="ts变量与数据类型"><a href="#ts变量与数据类型" class="headerlink" title="ts变量与数据类型"></a>ts变量与数据类型</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
+        <h3 id=""><a href="#" class="headerlink" title=""></a><a id="more"></a></h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><ul>
 <li><p>定义变量</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> userName:<span class="built_in">string</span> = <span class="string">&#x27;zhuoxue&#x27;</span>;</span><br></pre></td></tr></table></figure>
 </li>
@@ -289,8 +289,11 @@
 <blockquote>
 <p>never类型为ts中的底部类型，所有类型都是never类型的父类，所以never类型值可以赋给任意类型的变量</p>
 </blockquote>
-<h4 id="类型推断"><a href="#类型推断" class="headerlink" title="类型推断"></a>类型推断</h4><p>当变量的声明和初始化在一行时，可以省略变量类型的声明</p>
-<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> userName = <span class="string">&#x27;zhuoxue&#x27;</span>; <span class="comment">//此时userName为字符串类型</span></span><br><span class="line">userName = <span class="number">123</span>; <span class="comment">//非法</span></span><br></pre></td></tr></table></figure>
+<h4 id="类型断言"><a href="#类型断言" class="headerlink" title="类型断言"></a>类型断言</h4><p>可以把类型断言理解成”强制类型转换”。看下面这个例子</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getLength = <span class="function">(<span class="params">target: <span class="built_in">string</span> | <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (target.length || target.length === <span class="number">0</span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> target.length</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="keyword">return</span> target.toString.length</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这个函数的输入为字符串或数字，若输入字符串则返回字符串长度，若输入数字则先转换为字符串再返回长度，但是由于数字不存在属性<code>length</code>，故该代码会报错。解决办法为使用类型断言：</p>
+<figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> getLength = <span class="function">(<span class="params">target: <span class="built_in">string</span> | <span class="built_in">number</span></span>) =&gt;</span> &#123;</span><br><span class="line">      <span class="comment">// 类型断言的两种写法，在jss中只能使用第二种写法</span></span><br><span class="line">      <span class="keyword">if</span> ((&lt;<span class="built_in">string</span>&gt;target).length || (target <span class="keyword">as</span> <span class="built_in">string</span>).length === <span class="number">0</span>) &#123;</span><br><span class="line">          <span class="keyword">return</span> (&lt;<span class="built_in">string</span>&gt;target).length</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">return</span> target.toString.length</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="联合类型"><a href="#联合类型" class="headerlink" title="联合类型"></a>联合类型</h4><p>表示变量的取值可以为多种类型中的一种</p>
 <figure class="highlight typescript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> userName: <span class="built_in">string</span> | <span class="literal">null</span> = prompt(<span class="string">&#x27;input username:&#x27;</span>);</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">&#x27;hello&#x27;</span> + userName);</span><br></pre></td></tr></table></figure>
@@ -325,7 +328,7 @@
   </li>
   <li class="post-copyright-link">
     <strong>本文链接：</strong>
-    <a href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95/" title="TypeScript基础语法">https://zhuoxueqaq.github.io/2020/08/28/ts基础语法/</a>
+    <a href="https://zhuoxueqaq.github.io/2020/08/28/ts%E5%9F%BA%E6%9C%AC%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B/" title="TypeScript基本数据类型">https://zhuoxueqaq.github.io/2020/08/28/ts基本数据类型/</a>
   </li>
   <li class="post-copyright-license">
     <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
@@ -410,7 +413,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ts%E5%8F%98%E9%87%8F%E4%B8%8E%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.</span> <span class="nav-text">ts变量与数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">2.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.2.</span> <span class="nav-text">常用数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%8E%A8%E6%96%AD"><span class="nav-number">2.3.</span> <span class="nav-text">类型推断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">2.4.</span> <span class="nav-text">联合类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Elet%E5%92%8Cconst"><span class="nav-number">2.5.</span> <span class="nav-text">关于let和const</span></a></li></ol></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link"><span class="nav-number">1.</span> <span class="nav-text"></span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%98%E9%87%8F"><span class="nav-number">1.1.</span> <span class="nav-text">变量</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E6%95%B0%E6%8D%AE%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.2.</span> <span class="nav-text">常用数据类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%B1%BB%E5%9E%8B%E6%96%AD%E8%A8%80"><span class="nav-number">1.3.</span> <span class="nav-text">类型断言</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%81%94%E5%90%88%E7%B1%BB%E5%9E%8B"><span class="nav-number">1.4.</span> <span class="nav-text">联合类型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%B3%E4%BA%8Elet%E5%92%8Cconst"><span class="nav-number">1.5.</span> <span class="nav-text">关于let和const</span></a></li></ol></li></ol></div>
       </div>
       <!--/noindex-->
 
