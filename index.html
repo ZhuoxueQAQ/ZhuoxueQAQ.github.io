@@ -192,7 +192,7 @@
               <span class="post-meta-item-text">发表于</span>
               
 
-              <time title="创建时间：2020-09-16 19:15:20 / 修改时间：21:46:04" itemprop="dateCreated datePublished" datetime="2020-09-16T19:15:20+08:00">2020-09-16</time>
+              <time title="创建时间：2020-09-16 19:15:20 / 修改时间：21:48:24" itemprop="dateCreated datePublished" datetime="2020-09-16T19:15:20+08:00">2020-09-16</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -215,45 +215,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <a id="more"></a>
-
-<h3 id="常量和变量"><a href="#常量和变量" class="headerlink" title="常量和变量"></a>常量和变量</h3><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> constNumber = <span class="number">100</span></span><br><span class="line"><span class="keyword">var</span> variableNumber = <span class="number">100</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>对不需要改变的值尽量声明为常量<code>let</code></p>
-</blockquote>
-<p>也可以使用类型注解：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> constNumber:<span class="type">Int</span> = <span class="number">111</span></span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>一般来说很少需要，swift可以在赋值的时候通过初值推断出常量或者变量的类型</p>
-</blockquote>
-<p>输出常量和变量：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> constNumber:<span class="type">Int</span> = <span class="number">111</span></span><br><span class="line"><span class="built_in">print</span>(constNumber)</span><br><span class="line"><span class="comment">// 使用占位符</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;const Number is \(constNumber)&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<h3 id="基本数据类型"><a href="#基本数据类型" class="headerlink" title="基本数据类型"></a>基本数据类型</h3><h4 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h4><p>整数类型包含默认整形<code>Int</code>以及无符号整形<code>UInt</code>**,少用<code>UInt</code>**。</p>
-<p>整形有8,16,32,64位，一般来说不需要专门制定整形长度，用<code>Int</code>即可。</p>
-<h4 id="浮点型"><a href="#浮点型" class="headerlink" title="浮点型"></a>浮点型</h4><p>64位<code>Double</code>：高精度大存储</p>
-<p>32位<code>Float</code>: 低精度小存储</p>
-<blockquote>
-<p>都可以用的时候优先<code>Float</code></p>
-</blockquote>
-<h4 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> orangesAreOrange = <span class="literal">true</span></span><br><span class="line"><span class="keyword">let</span> turnipsAreDelicious = <span class="literal">false</span></span><br></pre></td></tr></table></figure>
-
-<p>布尔类型不能使用非布尔值，否则报错</p>
-<h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a>元组</h4><figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http404Error = (<span class="number">404</span>, <span class="string">&quot;Not Found&quot;</span>)</span><br><span class="line"><span class="comment">// http404Error 的类型是 (Int, String)，值是 (404, &quot;Not Found&quot;)</span></span><br></pre></td></tr></table></figure>
-
-<p>可以把任意顺序、个数的类型组合成元组。</p>
-<p>访问元组元素：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The status code is \(http404Error.0)&quot;</span>)</span><br><span class="line"><span class="comment">// 输出“The status code is 404”</span></span><br><span class="line"><span class="built_in">print</span>(<span class="string">&quot;The status message is \(http404Error.1)&quot;</span>)</span><br><span class="line"><span class="comment">// 输出“The status message is Not Found”</span></span><br></pre></td></tr></table></figure>
-
-<p>定义元组的时候给单个元素命名：</p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> http200Status = (statusCode: <span class="number">200</span>, description: <span class="string">&quot;OK&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>作为函数返回值时，元组非常有用。</p>
-</blockquote>
-
+          <h3 id=""><a href="#" class="headerlink" title=""></a>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/09/16/swift%E8%AF%AD%E6%B3%95%E5%9F%BA%E7%A1%80/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
       
     </div>
 
